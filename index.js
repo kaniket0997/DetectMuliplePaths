@@ -44,3 +44,11 @@ function setup(){
         maze_container.appendChild(row);
     }
 }
+
+function clicked(elementID){
+    var node=document.getElementById(elementID);
+    if(node.style.backgroundColor==original)
+        node.style.backgroundColor=wall;
+    else   
+        node.style.backgroundColor=original;
+}
