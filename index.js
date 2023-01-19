@@ -20,4 +20,27 @@ function setup(){
     modalCloss.addEventListener('click', function(){
         modalBg.classList.remove('bg-active');
     });
+
+    for(var i=0;i<len;i++)
+    {
+        var row=document.createElement('div');
+        row.className='row row'+(i+1);
+        row.id='row'+(i+1);
+        for(var j=0;j<len;j++)
+        {
+            var node=document.createElement('div');
+            node.className='node node'+((i*len)+(j+1));
+            node.id='node'+((i*len)+(j+1));
+            if(((i*len)+(j+1))!=1 && ((i*len)+(j+1))!=100)
+            {
+                node.style.backgroundColor=original;
+                    node.onclick=function()
+                    {
+                        clicked(this.id);
+                    }
+            }
+            row.appendChild(node);
+        }
+        maze_container.appendChild(row);
+    }
 }
