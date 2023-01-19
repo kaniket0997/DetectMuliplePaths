@@ -8,3 +8,16 @@ var path_color2='rgb(87, 176, 211)';
 var vis_color='rgb(81, 191, 211)';
 
 
+function setup(){
+    var modalBtn= document.querySelector('.modal-btn');
+    var modalBg= document.querySelector('.modal-bg');
+    var modalCloss= document.querySelector('.modal-closs');
+
+    modalBtn.addEventListener('click',function(){
+    modalBg.classList.add('bg-active');
+    });
+
+    modalCloss.addEventListener('click', function(){
+        modalBg.classList.remove('bg-active');
+    });
+}
