@@ -131,5 +131,20 @@ function bfs()
                 maze[row][col]=-1;
             }
         }
-    }  
+    } 
+    
+    var queue=[];
+    queue.push([0,0]);
+    
+    var visited=[];
+    for(let i=0;i<len;i++)
+        visited[i]= new Array(len).fill(0);
+    visited[0][0]=1;
+    
+    var pred=[];
+    for(let i=0;i<len;i++)
+        pred[i]=new Array(len).fill(0);
+    pred[0][0]=-1;
+
+    var path=[]; 
 }
