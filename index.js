@@ -83,3 +83,32 @@ function reset1()
     }
     return;
 }
+
+function display(visited, i, j)
+{
+
+    // for(var x=0;x<1000;x++)
+    // {
+    //     for(var y=0;y<100000;y++)
+    //     {
+
+    //     }
+    // }
+    for(var row=0;row<len;row++)
+    {
+        for(var col=0;col<len;col++)
+        {
+            if( (row==0 && col==0) || (row==len-1 && col==len-1) )
+                continue;
+            if(visited[row][col]==1)
+            {
+                //console.log(i,j);
+                var v=(row*len)+col+1;
+                var node=document.getElementById( 'node'+ v); 
+                node.style.backgroundColor=vis_color;
+                //console.log('hello ');
+            }
+        }
+    }
+    return;
+}
