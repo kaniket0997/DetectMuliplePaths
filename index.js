@@ -52,3 +52,34 @@ function clicked(elementID){
     else   
         node.style.backgroundColor=original;
 }
+
+function reset()
+{
+    for(var row=0;row<len;row++)
+    {
+        for(var col=0;col<len;col++)
+        {
+            if(((row*len)+(col+1))==1 || ((row*len)+(col+1))==100 )
+                continue;
+            var node=document.getElementById('node'+((row*len)+(col+1)));
+            node.style.backgroundColor=original;
+        }
+    }
+    return;
+}
+
+function reset1()
+{
+    for(var row=0;row<len;row++)
+    {
+        for(var col=0;col<len;col++)
+        {
+            var node=document.getElementById('node'+((row*len)+(col+1)));
+            if(((row*len)+(col+1))==1 || ((row*len)+(col+1))==100 || node.style.backgroundColor==wall)
+                continue;
+            var node=document.getElementById('node'+((row*len)+(col+1)));
+            node.style.backgroundColor=original;
+        }
+    }
+    return;
+}
