@@ -209,4 +209,6 @@ function bfs()
         queue.push([u[0][0],u[0][1]+1]);
         pred[u[0][0]][u[0][1]+1]=u[0][0]*len+u[0][1]+1;
     }
+    alert("Not found");
+    return;
 }
