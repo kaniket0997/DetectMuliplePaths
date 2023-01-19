@@ -147,4 +147,38 @@ function bfs()
     pred[0][0]=-1;
 
     var path=[]; 
+
+    while(queue.length>0)
+    {
+        var u= queue.splice(0,1);
+        //console.log(u);
+        if(u[0][0]==len-1 && u[0][1]==len-1)
+        {
+            //console.log(pred);
+            var x=pred[len-1][len-1];
+            path.push([x]);
+            //console.log(x);
+            while(x!=-1)
+            {
+                y=parseInt(x/len);
+                z=x%len-1;
+                if(z<0)
+                {
+                    y=y-1;
+                    z=9;
+                }
+                x=pred[y][z];
+                path.push([x]);
+            }
+            var i=path.length-2;
+            while(i)
+            {
+                //console.log(path[i-1]);
+                var node1=document.getElementById('node'+path[i-1]);
+                node1.style.backgroundColor=path_color;
+                i--;
+            }
+            return;
+        }
+    }
 }
