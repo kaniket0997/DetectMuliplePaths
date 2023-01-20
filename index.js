@@ -212,3 +212,21 @@ function bfs()
     alert("Not found");
     return;
 }
+
+function dfs()
+{
+    reset1();
+    var maze=[];
+    for(let i=0;i<len;i++)
+        maze[i]= new Array(len).fill(0);
+    for(let row=0;row<len;row++)
+    {
+        for(let col=0;col<len;col++)
+        {
+            if(document.getElementById('node'+((row*len)+(col+1))).style.backgroundColor==wall )
+            {
+                maze[row][col]=-1;
+            }
+        }
+    } 
+}
