@@ -229,4 +229,22 @@ function dfs()
             }
         }
     } 
+    if(dfs1(maze, visited, 0, 0, path))
+    {
+        //console.log(path);
+        var i=0;
+        while(i<path.length-1)
+        {
+            var x=path[i][0];
+            var y=path[i][1];
+            y=y+1;
+            x=x*10+y;
+            var node1=document.getElementById('node'+x);
+            node1.style.backgroundColor=path_color;
+            i++;
+        }
+    }
+    else    
+        alert("not found ");
+    //console.log(path);
 }
