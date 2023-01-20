@@ -213,38 +213,47 @@ function bfs()
     return;
 }
 
-function dfs()
+// ---------------------------------------DFS------------------------------------------
+
+
+function dfs1(maze, visited, sx, sy, path)
 {
-    reset1();
-    var maze=[];
-    for(let i=0;i<len;i++)
-        maze[i]= new Array(len).fill(0);
-    for(let row=0;row<len;row++)
+    if(sx==len-1 && sy==len-1)
     {
-        for(let col=0;col<len;col++)
-        {
-            if(document.getElementById('node'+((row*len)+(col+1))).style.backgroundColor==wall )
-            {
-                maze[row][col]=-1;
-            }
-        }
-    } 
-    if(dfs1(maze, visited, 0, 0, path))
-    {
-        //console.log(path);
-        var i=0;
-        while(i<path.length-1)
-        {
-            var x=path[i][0];
-            var y=path[i][1];
-            y=y+1;
-            x=x*10+y;
-            var node1=document.getElementById('node'+x);
-            node1.style.backgroundColor=path_color;
-            i++;
-        }
+        return 1;
     }
-    else    
-        alert("not found ");
-    //console.log(path);
+    if(visited[sx][sy]==0)
+    {
+        visited[sx][sy]=1;
+        if(sx+1<len && visited[sx+1][sy]==0 && maze[sx+1][sy]==0)
+        {
+            path.push([sx+1,sy]);
+            if(dfs1(maze, visited, sx+1, sy, path))
+                return 1;
+            path.pop();
+        }
+        if(sx-1>=0 && visited[sx-1][sy]==0 && maze[sx-1][sy]==0)
+        {
+            path.push([sx-1,sy]);
+            if(dfs1(maze, visited, sx-1, sy, path))
+                return 1;
+            path.pop();
+        }
+        if(sy+1<len && visited[sx][sy+1]==0 && maze[sx][sy+1]==0)
+        {
+            path.push([sx,sy+1]);
+            if(dfs1(maze, visited, sx, sy+1, path))
+                return 1;
+            path.pop();
+        }
+        if(sy-1>=0 && visited[sx][sy-1]==0 && maze[sx][sy-1]==0)
+        {
+            path.push([sx,sy-1]);
+            if(dfs1(maze, visited, sx, sy-1, path))
+                return 1;
+            path.pop();
+        }
+        return 0;
+    }
+    return 0;
 }
