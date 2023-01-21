@@ -300,3 +300,27 @@ function dfs()
         alert("not found ");
     //console.log(path);
 }
+
+// -----------------------------------------------BD BFS-----------------------------------------------
+
+function bdbfs1(pred1, pred2, maze)
+{
+    var q1=[];
+    q1.push([0,0]);
+    
+    var q2=[];
+    q2.push([len-1,len-1]);
+
+    var visited1=[];
+    for(let i=0;i<len;i++)
+        visited1[i]= new Array(len).fill(0);
+    visited1[0][0]=1;
+    
+    var visited2=[];
+    for(let i=0;i<len;i++)
+        visited2[i]= new Array(len).fill(0);
+    visited2[len-1][len-1]=1;  
+
+    return 0;
+}
+
