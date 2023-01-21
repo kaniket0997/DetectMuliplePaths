@@ -257,3 +257,46 @@ function dfs1(maze, visited, sx, sy, path)
     }
     return 0;
 }
+
+function dfs()
+{
+    reset1();
+    var maze=[];
+    for(let i=0;i<len;i++)
+        maze[i]= new Array(len).fill(0);
+    for(let row=0;row<len;row++)
+    {
+        for(let col=0;col<len;col++)
+        {
+            if(document.getElementById('node'+((row*len)+(col+1))).style.backgroundColor==wall )
+            {
+                maze[row][col]=-1;
+            }
+        }
+    } 
+
+    var visited=[];
+    for(let i=0;i<len;i++)
+        visited[i]= new Array(len).fill(0);
+
+    var path=[];
+
+    if(dfs1(maze, visited, 0, 0, path))
+    {
+        //console.log(path);
+        var i=0;
+        while(i<path.length-1)
+        {
+            var x=path[i][0];
+            var y=path[i][1];
+            y=y+1;
+            x=x*10+y;
+            var node1=document.getElementById('node'+x);
+            node1.style.backgroundColor=path_color;
+            i++;
+        }
+    }
+    else    
+        alert("not found ");
+    //console.log(path);
+}
