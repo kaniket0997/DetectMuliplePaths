@@ -426,3 +426,97 @@ function bdbfs1(pred1, pred2, maze)
     }
 }
 
+function bdbfs()
+{
+    reset1();
+    var maze=[];
+    for(let i=0;i<len;i++)
+        maze[i]= new Array(len).fill(0);
+    for(let row=0;row<len;row++)
+    {
+        for(let col=0;col<len;col++)
+        {
+            if(document.getElementById('node'+((row*len)+(col+1))).style.backgroundColor==wall )
+            {
+                maze[row][col]=-1;
+            }
+        }
+    }  
+
+    var path1=[];
+    var path2=[];
+
+    
+    var pred1=[];
+    for(let i=0;i<len;i++)
+        pred1[i]=new Array(len).fill(0);
+    pred1[0][0]=-1;
+
+    var pred2=[];
+    for(let i=0;i<len;i++)
+        pred2[i]=new Array(len).fill(0);
+    pred2[len-1][len-1]=-1;  
+
+    var met=bdbfs1(pred1, pred2, maze);
+    // console.log(pred1);
+    // console.log(pred2);
+    if(met)
+    {
+        path1.push([met]);
+        var metx=parseInt(met/10);
+        var mety=met%10-1;
+        if(mety<0)
+        {
+            metx=metx-1;
+            mety=9;
+        }
+        var x=pred1[metx][mety];
+        path1.push([x]);
+        while(x!=-1)
+        {
+            var y=parseInt(x/len);
+            var z=x%len-1;
+            if(z<0)
+            {
+                y=y-1;
+                z=9;
+            }
+            x=pred1[y][z];
+            path1.push([x]);
+        }
+        var i=path1.length-2;
+        while(i)
+        {
+            var node1=document.getElementById('node'+path1[i-1]);
+            node1.style.backgroundColor=path_color;
+            i--;
+        }
+
+        x=pred2[metx][mety];
+        path2.push([x]);
+        while(x!=-1)
+        {
+            var y=parseInt(x/len);
+            var z=x%len-1;
+            if(z<0)
+            {
+                y=y-1;
+                z=9;
+            }
+            x=pred2[y][z];
+            path2.push([x]);
+        }
+        var i=path2.length-2;
+        while(i)
+        {
+            var node1=document.getElementById('node'+path2[i-1]);
+            node1.style.backgroundColor=path_color2;
+            i--;
+        }
+
+    }
+    else    
+        alert("Not found");
+}
+
+
