@@ -423,5 +423,6 @@ function bdbfs1(pred1, pred2, maze)
         }
 
     return 0;
+    }
 }
 
